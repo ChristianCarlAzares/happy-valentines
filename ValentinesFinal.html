@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day My Wife ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #FF1744;
+            --soft-pink: #FFE5EC;
+            --deep-rose: #C41E3A;
+            --cream: #FFF5F7;
+            --gold: #FFD700;
+            --shadow: rgba(196, 30, 58, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFC9D9 50%, #FFB3C6 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .floating-hearts::before,
+        .floating-hearts::after {
+            content: '❤️';
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: float 15s infinite;
+        }
+
+        .floating-hearts::before {
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-hearts::after {
+            left: 80%;
+            animation-delay: 7s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Screen Management */
+        .screen {
+            display: none;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .screen.active {
+            display: flex;
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Welcome Screen */
+        .welcome-content {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: var(--deep-rose);
+            text-shadow: 3px 3px 6px var(--shadow);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+            animation: heartbeat 2s infinite;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--primary-red);
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.05); }
+            20% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Heart Button */
+        .heart-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .heart-button {
+            position: relative;
+            width: 200px;
+            height: 180px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .heart-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 180px;
+            background: var(--primary-red);
+            clip-path: path('M100,170 L40,100 Q20,80 20,60 Q20,30 40,15 Q60,0 80,0 Q95,0 100,10 Q105,0 120,0 Q140,0 160,15 Q180,30 180,60 Q180,80 160,100 Z');
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .heart-button:hover::before {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .heart-button:active::before {
+            transform: translateX(-50%) scale(0.95);
+        }
+
+        .button-text {
+            position: relative;
+            z-index: 10;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Quiz Screen */
+        .quiz-content {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(196, 30, 58, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .quiz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .question-card {
+            display: none;
+        }
+
+        .question-card.active {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-btn {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--deep-rose);
+            background: var(--soft-pink);
+            border: 3px solid transparent;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .option-btn:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--shadow);
+        }
+
+        .option-btn.correct {
+            background: #4CAF50;
+            color: white;
+            border-color: #2E7D32;
+        }
+
+        .option-btn.wrong {
+            background: #f44336;
+            color: white;
+            border-color: #c62828;
+        }
+
+        /* Checkbox Group */
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: var(--soft-pink);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .checkbox-label:hover {
+            background: rgba(255, 23, 68, 0.1);
+            transform: translateX(5px);
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 24px;
+            height: 24px;
+            margin-right: 1rem;
+            cursor: pointer;
+            accent-color: var(--primary-red);
+        }
+
+        /* Date Input */
+        .date-input {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-family: 'Quicksand', sans-serif;
+            border: 3px solid var(--soft-pink);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .date-input:focus {
+            border-color: var(--primary-red);
+            box-shadow: 0 0 0 4px rgba(255, 23, 68, 0.1);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-rose));
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 30px;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-text {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .hearts-burst {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+        }
+
+        .hearts-burst::before,
+        .hearts-burst::after {
+            content: '❤️';
+            position: absolute;
+            animation: burst 1s ease-out infinite;
+        }
+
+        .hearts-burst::before {
+            left: -60px;
+            animation-delay: 0.2s;
+        }
+
+        .hearts-burst::after {
+            right: -60px;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes burst {
+            0% {
+                transform: translateY(0) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-50px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Timer Screen */
+        .timer-content {
+            text-align: center;
+        }
+
+        .countdown-circle {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 0 auto 2rem;
+        }
+
+        .countdown-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .countdown-bg {
+            fill: none;
+            stroke: var(--soft-pink);
+            stroke-width: 10;
+        }
+
+        .countdown-progress {
+            fill: none;
+            stroke: var(--primary-red);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 565;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s linear;
+        }
+
+        .countdown-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--primary-red);
+        }
+
+        .timer-message {
+            font-size: 1.5rem;
+            color: var(--deep-rose);
+            font-weight: 500;
+        }
+
+        /* Message Screen */
+        .message-content {
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .message-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 2rem;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(196, 30, 58, 0.2);
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 3px solid var(--soft-pink);
+        }
+
+        .message-box p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .signature {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem !important;
+            color: var(--primary-red) !important;
+            font-weight: 600;
+        }
+
+        .next-btn {
+            padding: 1.5rem 4rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-rose));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        /* Final Screen */
+        .final-content {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .kitten-hearts {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .kitten-heart {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        .kitten-heart:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .kitten-heart:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .kitten {
+            font-size: 4rem;
+        }
+
+        .heart-icon {
+            font-size: 3rem;
+        }
+
+        .final-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-rose);
+            margin-bottom: 3rem;
+        }
+
+        .final-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .yes-btn,
+        .no-btn {
+            padding: 1.5rem 4rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Quicksand', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #4CAF50, #2E7D32);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(46, 125, 50, 0.4);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-rose));
+            color: white;
+            position: relative;
+        }
+
+        .no-btn:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Love Declaration */
+        .love-content {
+            background: linear-gradient(135deg, var(--primary-red), var(--deep-rose));
+            color: white;
+            padding: 5rem 3rem;
+        }
+
+        .love-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 900;
+            letter-spacing: 3px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .big-hearts {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+        }
+
+        .big-hearts::before,
+        .big-hearts::after {
+            content: '❤️';
+            position: absolute;
+            animation: heartFloat 2s ease-in-out infinite;
+        }
+
+        .big-hearts::before {
+            left: -80px;
+        }
+
+        .big-hearts::after {
+            right: -80px;
+            animation-delay: 1s;
+        }
+
+        @keyframes heartFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .sparkles {
+            margin-top: 2rem;
+            font-size: 2rem;
+        }
+
+        .sparkles::before {
+            content: '✨ ✨ ✨';
+            animation: sparkle 1s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quiz-content {
+                padding: 2rem;
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .final-buttons {
+                flex-direction: column;
+            }
+            
+            .yes-btn,
+            .no-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts"></div>
+
+    <div class="main-container">
+        
+        <div id="welcomeScreen" class="screen active">
+            <div class="welcome-content">
+                <h1 class="main-title">Happy Valentine's Day</h1>
+                <h2 class="subtitle">My Beautiful Wife</h2>
+                <div class="heart-button-container">
+                    <button id="startBtn" class="heart-button">
+                        <span class="button-text">START</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="quizScreen" class="screen">
+            <div class="quiz-content">
+                <h2 class="quiz-title">Let's See How Well You Know Me...</h2>
+                
+                <div class="question-card active" id="question1">
+                    <p class="question-text">What is my Favorite Color?</p>
+                    <div class="options-grid">
+                        <button class="option-btn" data-answer="Blue">Blue</button>
+                        <button class="option-btn" data-answer="Red">Red</button>
+                        <button class="option-btn" data-answer="Green">Green</button>
+                        <button class="option-btn" data-answer="Yellow">Yellow</button>
+                    </div>
+                </div>
+
+                <div class="question-card" id="question2">
+                    <p class="question-text">What are my Hobbies?</p>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Gaming">
+                            <span>Gaming</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Guitar">
+                            <span>Guitar</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Singing">
+                            <span>Singing</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Reading">
+                            <span>Reading</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" value="Cooking">
+                            <span>Cooking</span>
+                        </label>
+                    </div>
+                    <button class="submit-btn" id="submitHobbies">Submit</button>
+                </div>
+
+                <div class="question-card" id="question3">
+                    <p class="question-text">What is my Birthday?</p>
+                    <input type="date" id="birthdayInput" class="date-input">
+                    <button class="submit-btn" id="submitBirthday">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <div class="hearts-burst"></div>
+                <p class="modal-text">Kilalang kilala mo talaga ako asawa ko ahhhhhh alam mo aray koooooooo</p>
+            </div>
+        </div>
+
+        <div id="timerScreen" class="screen">
+            <div class="timer-content">
+                <div class="countdown-circle">
+                    <svg class="countdown-svg" viewBox="0 0 200 200">
+                        <circle class="countdown-bg" cx="100" cy="100" r="90"></circle>
+                        <circle class="countdown-progress" cx="100" cy="100" r="90"></circle>
+                    </svg>
+                    <div class="countdown-number" id="countdownNumber">5</div>
+                </div>
+                <p class="timer-message">Getting your message ready...</p>
+            </div>
+        </div>
+
+        <div id="messageScreen" class="screen">
+            <div class="message-content">
+                <h2 class="message-title">This are my message</h2>
+                <div class="message-box">
+                    <p>My dearest wife,</p>
+                    <p>Every moment with you is a blessing. You make my heart full and my life complete.</p>
+                    <p>I am so grateful for your love, your laughter, and the beautiful life we share together.</p>
+                    <p>Forever yours,</p>
+                    <p class="signature">Your Loving Husband ❤️</p>
+                </div>
+                <button class="next-btn" id="nextBtn">Next</button>
+            </div>
+        </div>
+
+        <div id="finalScreen" class="screen">
+            <div class="final-content">
+                <div class="kitten-hearts">
+                    <div class="kitten-heart">
+                        <span class="kitten">🐱</span>
+                        <span class="heart-icon">❤️</span>
+                    </div>
+                    <div class="kitten-heart">
+                        <span class="heart-icon">💕</span>
+                        <span class="kitten">🐱</span>
+                    </div>
+                    <div class="kitten-heart">
+                        <span class="kitten">🐱</span>
+                        <span class="heart-icon">💗</span>
+                    </div>
+                </div>
+                <h2 class="final-question">Will you be my Valentine's date?</h2>
+                <div class="final-buttons">
+                    <button class="yes-btn" id="yesBtn">YES</button>
+                    <button class="no-btn" id="noBtn">NO</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="loveDeclaration" class="modal">
+            <div class="modal-content love-content">
+                <div class="big-hearts"></div>
+                <h1 class="love-text">I LOVE YOU ALWAYS</h1>
+                <div class="sparkles"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // State management
+        let currentQuestion = 1;
+        let correctAnswers = 0;
+
+        // Screen elements
+        const welcomeScreen = document.getElementById('welcomeScreen');
+        const quizScreen = document.getElementById('quizScreen');
+        const timerScreen = document.getElementById('timerScreen');
+        const messageScreen = document.getElementById('messageScreen');
+        const finalScreen = document.getElementById('finalScreen');
+        const successModal = document.getElementById('successModal');
+        const loveDeclaration = document.getElementById('loveDeclaration');
+
+        // Button elements
+        const startBtn = document.getElementById('startBtn');
+        const submitHobbies = document.getElementById('submitHobbies');
+        const submitBirthday = document.getElementById('submitBirthday');
+        const nextBtn = document.getElementById('nextBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createFloatingHearts();
+            initializeEventListeners();
+        });
+
+        // Create floating hearts animation
+        function createFloatingHearts() {
+            const container = document.querySelector('.floating-hearts');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.style.position = 'absolute';
+                heart.style.fontSize = `${Math.random() * 2 + 1}rem`;
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.opacity = '0.1';
+                heart.style.animation = `float ${Math.random() * 10 + 10}s infinite`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(heart);
+            }
+        }
+
+        // Initialize event listeners
+        function initializeEventListeners() {
+            startBtn.addEventListener('click', startQuiz);
+            
+            // Question 1 - Color options
+            const colorOptions = document.querySelectorAll('#question1 .option-btn');
+            colorOptions.forEach(btn => {
+                btn.addEventListener('click', () => handleColorAnswer(btn));
+            });
+            
+            // Question 2 - Hobbies
+            submitHobbies.addEventListener('click', handleHobbiesAnswer);
+            
+            // Question 3 - Birthday
+            submitBirthday.addEventListener('click', handleBirthdayAnswer);
+            
+            // Next button
+            nextBtn.addEventListener('click', showFinalScreen);
+            
+            // Final buttons
+            yesBtn.addEventListener('click', handleYesAnswer);
+            noBtn.addEventListener('click', handleNoAnswer);
+        }
+
+        // Start quiz
+        function startQuiz() {
+            switchScreen(welcomeScreen, quizScreen);
+        }
+
+        // Handle color answer (Question 1)
+        function handleColorAnswer(selectedBtn) {
+            const answer = selectedBtn.getAttribute('data-answer');
+            const allButtons = document.querySelectorAll('#question1 .option-btn');
+            
+            allButtons.forEach(btn => {
+                btn.disabled = true;
+            });
+            
+            if (answer === 'Red') {
+                selectedBtn.classList.add('correct');
+                correctAnswers++;
+                setTimeout(() => {
+                    moveToNextQuestion();
+                }, 1000);
+            } else {
+                selectedBtn.classList.add('wrong');
+                setTimeout(() => {
+                    // Reset and allow retry
+                    allButtons.forEach(btn => {
+                        btn.disabled = false;
+                        btn.classList.remove('wrong', 'correct');
+                    });
+                }, 1500);
+            }
+        }
+
+        // Handle hobbies answer (Question 2)
+        function handleHobbiesAnswer() {
+            const checkboxes = document.querySelectorAll('#question2 input[type="checkbox"]');
+            const selectedHobbies = [];
+            
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedHobbies.push(checkbox.value);
+                }
+            });
+            
+            const correctHobbies = ['Gaming', 'Guitar', 'Singing'];
+            const isCorrect = correctHobbies.length === selectedHobbies.length &&
+                            correctHobbies.every(hobby => selectedHobbies.includes(hobby));
+            
+            if (isCorrect) {
+                correctAnswers++;
+                submitHobbies.textContent = 'Correct! ✓';
+                submitHobbies.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+                setTimeout(() => {
+                    moveToNextQuestion();
+                }, 1000);
+            } else {
+                submitHobbies.textContent = 'Try Again!';
+                submitHobbies.style.background = 'linear-gradient(135deg, #f44336, #c62828)';
+                setTimeout(() => {
+                    submitHobbies.textContent = 'Submit';
+                    submitHobbies.style.background = 'linear-gradient(135deg, var(--primary-red), var(--deep-rose))';
+                    checkboxes.forEach(cb => cb.checked = false);
+                }, 1500);
+            }
+        }
+
+        // Handle birthday answer (Question 3)
+        function handleBirthdayAnswer() {
+            const birthdayInput = document.getElementById('birthdayInput');
+            const selectedDate = new Date(birthdayInput.value);
+            
+            // Check if date is April 17, 2007
+            if (selectedDate.getMonth() === 3 && // April (0-indexed)
+                selectedDate.getDate() === 17 &&
+                selectedDate.getFullYear() === 2007) {
+                correctAnswers++;
+                submitBirthday.textContent = 'Correct! ✓';
+                submitBirthday.style.background = 'linear-gradient(135deg, #4CAF50, #2E7D32)';
+                setTimeout(() => {
+                    showSuccessModal();
+                }, 1000);
+            } else {
+                submitBirthday.textContent = 'Try Again!';
+                submitBirthday.style.background = 'linear-gradient(135deg, #f44336, #c62828)';
+                setTimeout(() => {
+                    submitBirthday.textContent = 'Submit';
+                    submitBirthday.style.background = 'linear-gradient(135deg, var(--primary-red), var(--deep-rose))';
+                    birthdayInput.value = '';
+                }, 1500);
+            }
+        }
+
+        // Move to next question
+        function moveToNextQuestion() {
+            const currentCard = document.querySelector('.question-card.active');
+            currentCard.classList.remove('active');
+            
+            currentQuestion++;
+            const nextCard = document.getElementById(`question${currentQuestion}`);
+            if (nextCard) {
+                nextCard.classList.add('active');
+            }
+        }
+
+        // Show success modal
+        function showSuccessModal() {
+            successModal.classList.add('active');
+            
+            // Auto close after 3 seconds and show timer
+            setTimeout(() => {
+                successModal.classList.remove('active');
+                showTimerScreen();
+            }, 3000);
+        }
+
+        // Show timer screen
+        function showTimerScreen() {
+            switchScreen(quizScreen, timerScreen);
+            startCountdown();
+        }
+
+        // Start countdown
+        function startCountdown() {
+            const countdownNumber = document.getElementById('countdownNumber');
+            const progressCircle = document.querySelector('.countdown-progress');
+            const circumference = 2 * Math.PI * 90; // radius is 90
+            
+            let timeLeft = 5;
+            
+            const interval = setInterval(() => {
+                timeLeft--;
+                countdownNumber.textContent = timeLeft;
+                
+                // Update circle progress
+                const offset = circumference - (timeLeft / 5) * circumference;
+                progressCircle.style.strokeDashoffset = offset;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    showMessageScreen();
+                }
+            }, 1000);
+        }
+
+        // Show message screen
+        function showMessageScreen() {
+            switchScreen(timerScreen, messageScreen);
+        }
+
+        // Show final screen
+        function showFinalScreen() {
+            switchScreen(messageScreen, finalScreen);
+        }
+
+        // Handle Yes answer
+        function handleYesAnswer() {
+            loveDeclaration.classList.add('active');
+            createConfetti();
+        }
+
+        // Handle No answer - button moves randomly
+        function handleNoAnswer() {
+            const button = noBtn;
+            const maxX = window.innerWidth - button.offsetWidth - 50;
+            const maxY = window.innerHeight - button.offsetHeight - 50;
+            
+            const randomX = Math.floor(Math.random() * maxX);
+            const randomY = Math.floor(Math.random() * maxY);
+            
+            button.style.position = 'fixed';
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+            button.style.transition = 'all 0.3s ease';
+        }
+
+        // Helper function to switch screens
+        function switchScreen(currentScreen, nextScreen) {
+            currentScreen.classList.remove('active');
+            setTimeout(() => {
+                nextScreen.classList.add('active');
+            }, 300);
+        }
+
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#FF1744', '#FFB3C6', '#FFE5EC', '#FFD700', '#FF69B4'];
+            const confettiCount = 100;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = '-10px';
+                confetti.style.opacity = '1';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.zIndex = '9999';
+                confetti.style.pointerEvents = 'none';
+                
+                document.body.appendChild(confetti);
+                
+                const duration = Math.random() * 3 + 2;
+                const endX = (Math.random() - 0.5) * 200;
+                
+                confetti.animate([
+                    {
+                        transform: 'translateY(0) translateX(0) rotate(0deg)',
+                        opacity: 1
+                    },
+                    {
+                        transform: `translateY(${window.innerHeight}px) translateX(${endX}px) rotate(${Math.random() * 720}deg)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, duration * 1000);
+            }
+        }
+
+        // Add some sparkle effects to the love declaration
+        function addSparkles() {
+            const sparkleContainer = document.querySelector('.sparkles');
+            if (sparkleContainer) {
+                setInterval(() => {
+                    const sparkle = document.createElement('span');
+                    sparkle.textContent = '✨';
+                    sparkle.style.position = 'absolute';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.animation = 'sparkle 1s ease-out forwards';
+                    sparkleContainer.appendChild(sparkle);
+                    
+                    setTimeout(() => sparkle.remove(), 1000);
+                }, 300);
+            }
+        }
+
+        // Initialize sparkles when love declaration is shown
+        yesBtn.addEventListener('click', () => {
+            setTimeout(addSparkles, 500);
+        });
+    </script>
+</body>
+</html>
